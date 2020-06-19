@@ -12,6 +12,10 @@ curl https://raw.githubusercontent.com/exablaze-oss/exanic-debug-dump/master/exa
 
 The script will state the absolute filepath of the resulting debug dump. Upload this debug dump to the support case for further review.
 
+## Supported Shells
+
+This script must be run under the Bash shell. No other shell is currently supported.
+
 ## Versioning
 
 This script implements [SemVer](https://semver.org/).
