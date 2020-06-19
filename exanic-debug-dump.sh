@@ -1,7 +1,9 @@
 #!/bin/bash
 
 help=0
+show_version=0
 compress_file=1
+version="1.0.0"
 
 # Borrowed from the following post: https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 POSITIONAL=()
@@ -21,6 +23,11 @@ do
         ;;
         -c|--disable-compression)
         compress_file=0
+        shift # past argument
+        shift # past value
+        ;;
+        -V|--version)
+        show_version=1
         shift # past argument
         shift # past value
         ;;
@@ -59,7 +66,27 @@ then
     echo "        the debug dump will be placed. Note that this file will be"
     echo "        gunzipped, so '.gz' will be appended to the end of it."
     echo "    -c: Disable gunzip compression of resulting debug dump."
-    echo "    -h: Display this help message."
+    echo "    -V: Display version information and exit."
+    echo "    -h: Display this help message and exit."
+    echo ""
+    echo "Please direct bug reports and questions to the GitHub Issues page"
+    echo "at <https://github.com/exablaze-oss/exanic-debug-dump/issues>"
+    exit 1
+fi
+
+if [ ${show_version} -eq 1]
+then
+    echo "Cisco ${product_pretty} Debug Dump v${version}"
+    echo ""
+    echo "Copyright (C) 2020 Cisco Systems, Inc."
+    echo "Cisco ${product_pretty} Debug Dump comes with ABSOLUTELY NO WARRANTY."
+    echo "This is free software, and you are welcome to redistribute it"
+    echo "under certain conditions. Please review the LICENSE file for"
+    echo "details."
+    echo ""
+    echo "Originally written by Christopher Hart <chart2@cisco.com>."
+    echo "Please direct bug reports and questions to the GitHub Issues page"
+    echo "at <https://github.com/exablaze-oss/exanic-debug-dump/issues>"
     exit 1
 fi
 
