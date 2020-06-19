@@ -58,6 +58,7 @@ then
     echo "    -o: Define the filepath (absolute or relative) and filename where"
     echo "        the debug dump will be placed. Note that this file will be"
     echo "        gunzipped, so '.gz' will be appended to the end of it."
+    echo "    -c: Disable gunzip compression of resulting debug dump."
     echo "    -h: Display this help message."
     exit 1
 fi
