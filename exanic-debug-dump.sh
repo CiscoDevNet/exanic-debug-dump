@@ -107,6 +107,8 @@ cmds=(
     "dmesg"
     "uptime"
     "cat /proc/cmdline"
+    "cat /proc/cpuinfo"
+    "cat /proc/meminfo"
     "cat /etc/os-release"
     "uname -a"
     "sudo ipmiutil sensor"
