@@ -3,7 +3,7 @@
 help=0
 show_version=0
 compress_file=1
-version="1.0.0"
+version="1.0.1"
 
 # Borrowed from the following post: https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 POSITIONAL=()
