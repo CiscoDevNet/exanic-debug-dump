@@ -74,7 +74,7 @@ then
     exit 1
 fi
 
-if [ ${show_version} -eq 1]
+if [ ${show_version} -eq 1 ]
 then
     echo "Cisco ${product_pretty} Debug Dump v${version}"
     echo ""
