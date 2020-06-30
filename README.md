@@ -22,4 +22,4 @@ This script implements [SemVer](https://semver.org/).
 
 ## License
 
-This project is licensed under the GPLv3 license. See the [LICENSE](https://github.com/exablaze-oss/exanic-debug-dump/blob/master/LICENSE) file for details.
+This project is licensed under the GPLv2 license. See the [LICENSE](https://github.com/exablaze-oss/exanic-debug-dump/blob/master/LICENSE) file for details.
