@@ -123,6 +123,8 @@ cmds=(
     "ls /etc/udev/rules.d/"
     "cat /etc/udev/rules.d/exanic*"
     "top -b -n 1"
+    "cat /proc/interrupts"
+    "cat /proc/stat"
     "date"
 )
 
