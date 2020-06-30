@@ -74,7 +74,7 @@ then
     exit 1
 fi
 
-if [ ${show_version} -eq 1]
+if [ ${show_version} -eq 1 ]
 then
     echo "Cisco ${product_pretty} Debug Dump v${version}"
     echo ""
@@ -122,7 +122,9 @@ cmds=(
     "ntpstat"
     "ls /etc/udev/rules.d/"
     "cat /etc/udev/rules.d/exanic*"
-    "top -b -n 1"
+    "top -b -n 1 | head -n 5"
+    "cat /proc/interrupts"
+    "cat /proc/stat"
     "date"
 )
 
@@ -131,7 +133,7 @@ echo "Executing Debug Dump commands..."
 echo "---------- Cisco ${product_pretty} Debug Dump ----------" &>> $filepath
 for cmd in "${cmds[@]}"; do
     echo \`$cmd\` &>> $filepath
-    $cmd &>> $filepath
+    eval $cmd &>> $filepath
     echo "" &>> $filepath # Newline
 done
 
