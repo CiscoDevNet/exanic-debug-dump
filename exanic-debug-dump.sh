@@ -133,7 +133,7 @@ echo "Executing Debug Dump commands..."
 echo "---------- Cisco ${product_pretty} Debug Dump ----------" &>> $filepath
 for cmd in "${cmds[@]}"; do
     echo \`$cmd\` &>> $filepath
-    $cmd &>> $filepath
+    eval $cmd &>> $filepath
     echo "" &>> $filepath # Newline
 done
 
