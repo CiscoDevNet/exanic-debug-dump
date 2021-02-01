@@ -78,7 +78,7 @@ if [ ${show_version} -eq 1 ]
 then
     echo "Cisco ${product_pretty} Debug Dump v${version}"
     echo ""
-    echo "Copyright (C) 2020 Cisco Systems, Inc."
+    echo "Copyright (C) 2021 Cisco Systems, Inc."
     echo "Cisco ${product_pretty} Debug Dump comes with ABSOLUTELY NO WARRANTY."
     echo "This is free software, and you are welcome to redistribute it"
     echo "under certain conditions. Please review the LICENSE file for"
