@@ -100,6 +100,7 @@ sudo -v
 
 cmds=(
     "date"
+    "hostname"
     "sudo lspci -vv"
     "which exanic-config"
     "sudo exanic-config -v"
