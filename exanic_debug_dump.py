@@ -13,7 +13,6 @@ PRODUCT_PRETTY = "Nexus SmartNIC"
 TIMESTAMP = datetime.utcnow().strftime("%F-%HH%MM%S.%f")
 FILENAME = "{0}_{1}_debug_dump_{2}.log".format(os.uname()[1], PRODUCT, TIMESTAMP)
 FILEPATH = "{0}/{1}".format(os.getenv("HOME"), FILENAME)
-FINAL_FILENAME = "{0}.gz".format(FILENAME)
 FINAL_FILEPATH = "{0}.gz".format(FILEPATH)
 ISSUES = (
     "Please direct bug reports and questions to the GitHub Issues page at "
@@ -30,7 +29,7 @@ __copyright__ = (
 # Each element in this list is either a string, or a callable. If an element is
 # a string, we assume that the string is command that needs to be executed
 # directly by os.system(). If the element is a callable, then we call that
-# function while passing in the 
+# function while passing in the
 COMMANDS = [
     "date",
     "hostname",
@@ -62,21 +61,23 @@ COMMANDS = [
     "date",
 ]
 
+
 def run_string_command(command, file):
-        file.write("`{0}`\n".format(command))
-        p = subprocess.Popen(
-            command,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            universal_newlines=True,
-            shell=True
-        )
-        stdout, stderr = p.communicate()
-        if stdout:
-            file.write(stdout)
-        if stderr:
-            file.write(stderr)
-        file.write("\n")
+    file.write("`{0}`\n".format(command))
+    p = subprocess.Popen(
+        command,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        universal_newlines=True,
+        shell=True,
+    )
+    stdout, stderr = p.communicate()
+    if stdout:
+        file.write(stdout)
+    if stderr:
+        file.write(stderr)
+    file.write("\n")
+
 
 def run_commands(filepath):
     print("Executing Debug Dump commands...")
@@ -100,19 +101,19 @@ def parse_arguments():
             "script will prompt for superuser credentials, as some commands must "
             "be run with sudo.".format(PRODUCT_PRETTY, FINAL_FILEPATH)
         ),
-        epilog=ISSUES
+        epilog=ISSUES,
     )
     parser.add_argument(
         "--output-filepath",
         "-o",
         action="store",
-        default=FINAL_FILEPATH,
+        default=FILEPATH,
         help=(
             "This argument will define the filepath (absolute or relative) and "
             "filename where the debug dump will be written. Note that this file "
             "will be gunzipped, so '.gz' will be appended to the end of the "
             "filename."
-        )
+        ),
     )
     parser.add_argument(
         "--disable-compression",
@@ -122,21 +123,20 @@ def parse_arguments():
         help=(
             "This argument will disable gunzip compression of the debug dump "
             "created by this script."
-        )
+        ),
     )
     parser.add_argument(
         "--version",
         "-V",
         action="store_true",
         default=False,
-        help=(
-            "This argument will display the version of the script and exit."
-        )
+        help=("This argument will display the version of the script and exit."),
     )
     return parser.parse_args()
 
 
 def main():
+    global FINAL_FILEPATH
     args = parse_arguments()
     if args.version:
         version = (
@@ -151,23 +151,26 @@ def main():
                 __copyright__,
                 __author__,
                 __email__,
-                ISSUES
+                ISSUES,
             )
         )
         print(version)
         sys.exit()
+    FINAL_FILEPATH = (
+        "{0}.gz".format(args.output_filepath)
+        if args.output_filepath
+        else FINAL_FILEPATH
+    )
     os.system("sudo -v")
-    filepath = args.output_filepath if args.output_filepath else FILEPATH
-    final_filepath = args.output_filepath if args.output_filepath else FINAL_FILEPATH
-    run_commands(filepath)
+    run_commands(args.output_filepath)
     if not args.disable_compression:
         print("Compressing Debug Dump...")
-        subprocess.check_call(["gzip", filepath])
+        subprocess.check_call(["gzip", "-f", args.output_filepath])
     print("Debug Dump has completed!")
     if args.disable_compression:
-        print("File location: {0}".format(filepath))
+        print("File location: {0}".format("{0}.gz".format(args.output_filepath)))
     else:
-        print("File location: {0}".format(final_filepath))
+        print("File location: {0}".format(FINAL_FILEPATH))
 
 
 if __name__ == "__main__":
