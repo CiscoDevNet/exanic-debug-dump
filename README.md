@@ -14,7 +14,7 @@ The script will state the absolute filepath of the resulting debug dump. Upload 
 
 ## Supported Python Versions
 
-This script must be run using Python 2. No other Python version is currently supported. Support for Python 3 will be added when Python 3 becomes the new default Python interpreter among the plurality of Linux distributions.
+This script can be run using Python 2 or Python 3.
 
 ## Versioning
 
