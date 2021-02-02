@@ -39,8 +39,8 @@ do
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
-product="exanic"
-product_pretty="ExaNIC"
+product="smartnic"
+product_pretty="Nexus SmartNIC"
 timestamp="$(date +%F-%HH%MM%S.%N)"
 filename="${HOSTNAME}_${product}_debug_dump_${timestamp}.log"
 filepath="${HOME}/${filename}"
