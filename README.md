@@ -7,10 +7,10 @@ The ExaNIC Debug Dump is a Bash shell script that creates a gunzipped logfile co
 You can create a debug dump using the following command:
 
 ```
-curl https://raw.githubusercontent.com/exablaze-oss/exanic-debug-dump/master/exanic-debug-dump.sh | sh
+curl https://raw.githubusercontent.com/exablaze-oss/exanic-debug-dump/master/exanic-debug-dump.sh | bash
 ```
 
-The script will state the absolute filepath of the resulting debug dump. Upload this debug dump to the support case for further review.
+The script will state the absolute filepath of the resulting debug dump. Upload this debug dump to the Cisco TAC support case for further review.
 
 ## Supported Shells
 
