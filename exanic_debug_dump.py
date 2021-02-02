@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 import subprocess
 from datetime import datetime
 
-__version__ = "1.0.3"
+__version__ = "1.1.0"
 __author__ = "Christopher Hart"
 __email__ = "chart2@cisco.com"
 
