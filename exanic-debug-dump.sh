@@ -3,7 +3,7 @@
 help=0
 show_version=0
 compress_file=1
-version="1.0.1"
+version="1.0.2"
 
 # Borrowed from the following post: https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash
 POSITIONAL=()
@@ -39,8 +39,8 @@ do
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
-product="exanic"
-product_pretty="ExaNIC"
+product="smartnic"
+product_pretty="Nexus SmartNIC"
 timestamp="$(date +%F-%HH%MM%S.%N)"
 filename="${HOSTNAME}_${product}_debug_dump_${timestamp}.log"
 filepath="${HOME}/${filename}"
@@ -78,7 +78,7 @@ if [ ${show_version} -eq 1 ]
 then
     echo "Cisco ${product_pretty} Debug Dump v${version}"
     echo ""
-    echo "Copyright (C) 2020 Cisco Systems, Inc."
+    echo "Copyright (C) 2021 Cisco Systems, Inc."
     echo "Cisco ${product_pretty} Debug Dump comes with ABSOLUTELY NO WARRANTY."
     echo "This is free software, and you are welcome to redistribute it"
     echo "under certain conditions. Please review the LICENSE file for"
@@ -100,6 +100,7 @@ sudo -v
 
 cmds=(
     "date"
+    "hostname"
     "sudo lspci -vv"
     "which exanic-config"
     "sudo exanic-config -v"
