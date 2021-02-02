@@ -160,11 +160,11 @@ def main():
         sys.exit()
     os.system("sudo -v")
     filepath = args.output_filepath if args.output_filepath else FILEPATH
-    final_filepath = "{0}.gz".format(args.output_filepath) if args.output_filepath else FINAL_FILEPATH
+    final_filepath = args.output_filepath if args.output_filepath else FINAL_FILEPATH
     run_commands(filepath)
     if not args.disable_compression:
         print("Compressing Debug Dump...")
-        with open(filepath, "rb") as f_in, gzip.open("{0}.gz".format(filepath), "wb") as f_out:
+        with open(filepath, "rb") as f_in, gzip.open(filepath, "wb") as f_out:
             shutil.copyfileobj(f_in, f_out)
     print("Debug Dump has completed!")
     if args.disable_compression:
