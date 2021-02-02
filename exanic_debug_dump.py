@@ -2,8 +2,6 @@ import sys
 import os
 from argparse import ArgumentParser
 import subprocess
-import shutil
-import gzip
 from datetime import datetime
 
 __version__ = "1.0.3"
