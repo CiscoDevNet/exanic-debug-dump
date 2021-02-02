@@ -164,7 +164,7 @@ def main():
     run_commands(filepath)
     if not args.disable_compression:
         print("Compressing Debug Dump...")
-        with open(filepath, "rb") as f_in, gzip.open("{0}.gz".format(filepath), "wb") as f_out:
+        with open(filepath, "rb") as f_in, gzip.open(filepath, "wb") as f_out:
             shutil.copyfileobj(f_in, f_out)
     print("Debug Dump has completed!")
     if args.disable_compression:
