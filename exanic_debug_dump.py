@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 import subprocess
 from datetime import datetime
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 __author__ = "Christopher Hart"
 __email__ = "chart2@cisco.com"
 
@@ -41,6 +41,7 @@ COMMANDS = [
     "uptime",
     "cat /proc/cmdline",
     "cat /proc/cpuinfo",
+    "lscpu",
     "cat /proc/meminfo",
     "cat /etc/os-release",
     "uname -a",
