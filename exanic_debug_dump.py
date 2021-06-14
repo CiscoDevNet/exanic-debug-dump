@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 import subprocess
 from datetime import datetime
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 __author__ = "Christopher Hart"
 __email__ = "chart2@cisco.com"
 
@@ -32,6 +32,7 @@ __copyright__ = (
 # function while passing in the
 COMMANDS = [
     "date",
+    "date +%s",
     "hostname",
     "sudo lspci -vv",
     "which exanic-config",
@@ -59,6 +60,7 @@ COMMANDS = [
     "top -b -n 1 | head -n 5",
     "cat /proc/interrupts",
     "cat /proc/stat",
+    "date +%s",
     "date",
 ]
 
